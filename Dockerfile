@@ -1,5 +1,4 @@
 FROM debian:buster
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-CMD [ "php", "./your-script.php" ]
+COPY srcs/script.sh .
 RUN echo 'coucou les amis'
+RUN script.sh
