@@ -1,4 +1,4 @@
 FROM debian:buster
-COPY srcs/script.sh .
-RUN echo 'coucou les amis'
-CMD bash script.sh
+LABEL maintainer="gsmets@student.42.fr"
+COPY srcs/install.sh .
+COPY srcs/nginx-config.conf ./tmp
