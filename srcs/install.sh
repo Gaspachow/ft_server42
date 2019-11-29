@@ -30,24 +30,26 @@ echo "CREATE DATABASE wordpress;" | mysql -u root
 echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';" | mysql -u root
 echo "FLUSH PRIVILEGES;" | mysql -u root
 echo "update mysql.user set plugin = 'mysql_native_password' where user='root';" | mysql -u root
-mysql wordpress -u root --password=  < /dump.sql
+mysql wordpress -u root --password=  < /tmp/dump.sql
 
 #Setup PHP7.3
 service php7.3-fpm start
-
-#Setup phpMyAdmin
-mv /tmp/phpmyadmin.config.php /var/www/localhost/phpmyadmin/config.inc.php
-chown -R www-data:www-data /var/www/*
-chmod -R 777 /var/www/*
 
 #Setup Certificates
 cd certificates && ./mkcert localhost
 cd ..
 
 #Setup wordpress
-wget -O wordpress.tar.gz https://wordpress.org/latest.tar.gz
-mv wordpress.tar.gz /var/www/localhost/wordpress.tar.gz
+cp /tmp/wordpress.tar.gz /var/www/localhost/wordpress.tar.gz
 cd /var/www/localhost && tar -xzf wordpress.tar.gz && rm wordpress.tar.gz
+cd ../../..
+mv /tmp/wp-config.php var/www/localhost/wordpress
+mv /tmp/index.html var/www/localhost/index.html
+
+#Setup phpMyAdmin
+mv /tmp/phpmyadmin.config.php /var/www/localhost/phpmyadmin/config.inc.php
+chown -R www-data:www-data /var/www/*
+chmod -R 755 /var/www/*
 
 #Overall restart
 service mysql restart
