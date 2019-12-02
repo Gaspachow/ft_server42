@@ -44,7 +44,6 @@ cp /tmp/wordpress.tar.gz /var/www/localhost/wordpress.tar.gz
 cd /var/www/localhost && tar -xzf wordpress.tar.gz && rm wordpress.tar.gz
 cd ../../..
 mv /tmp/wp-config.php var/www/localhost/wordpress
-mv /tmp/index.html var/www/localhost/index.html
 
 #Setup phpMyAdmin
 mv /tmp/phpmyadmin.config.php /var/www/localhost/phpmyadmin/config.inc.php
