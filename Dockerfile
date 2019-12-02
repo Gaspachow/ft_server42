@@ -7,3 +7,4 @@ COPY srcs/wp-config.php ./tmp
 COPY srcs/wordpress.tar.gz ./tmp
 COPY srcs/index.html ./tmp
 COPY srcs/phpmyadmin.config.php ./tmp
+COPY srcs/phpMyAdmin-4.9.2-english.tar.gz ./tmp

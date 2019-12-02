@@ -10,7 +10,7 @@ apt-get install nginx -y
 apt-get install mariadb-server -y
 apt-get install libnss3-tools -y
 apt-get install php7.3 php7.3-fpm php7.3-mysql php-mbstring php-common php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-readline -y
-wget -O phpMyAdmin.tar.gz https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz
+mv ./tmp/phpMyAdmin-4.9.2-english.tar.gz phpMyAdmin.tar.gz
 tar xzf phpMyAdmin.tar.gz --strip-components=1 -C /var/www/localhost/phpmyadmin
 rm phpMyAdmin.tar.gz
 wget -O mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.1.2/mkcert-v1.1.2-linux-amd64
